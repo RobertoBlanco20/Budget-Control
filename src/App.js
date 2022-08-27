@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Fragment, useState} from 'react';
+import Pregunta from './components/Pregunta'
+
 
 function App() {
+
+
+  const [ budget, setBudget ] = useState(0);
+  const [remaining, setRemaining ] = useState(0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Fragment>
+        <header className="container mx-auto">
+          <h1 className="text-center text-5xl mt-4 text-white">weekly budget</h1>
+        </header>
+
+        <main className="container bg-white w-8/12 mx-auto mt-10 my-4 rounded p-5">
+            <Pregunta 
+              setBudget={setBudget}
+              setRemaining={setRemaining}
+            />
+        </main>
+
+    </Fragment>
+    );
 }
 
 export default App;
