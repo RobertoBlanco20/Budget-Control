@@ -1,5 +1,6 @@
 import React, {Fragment, useState} from 'react';
 import Pregunta from './components/Pregunta'
+import Formulario from './components/Formulario'
 
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
 
   const [ budget, setBudget ] = useState(0);
   const [remaining, setRemaining ] = useState(0);
+  const [ ask, setAsk ] = useState(true);
 
   return (
     <Fragment>
@@ -15,10 +17,22 @@ function App() {
         </header>
 
         <main className="container bg-white w-8/12 mx-auto mt-10 my-4 rounded p-5">
-            <Pregunta 
+          { ask ? (   <Pregunta 
               setBudget={setBudget}
               setRemaining={setRemaining}
-            />
+              setAsk={setAsk}
+            /> ) 
+            
+            : 
+            
+            (<article className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <section className='w-full'>
+              <Formulario />
+            </section>
+            <section className='w-full'>2</section>
+            </article>)}
+         
+            
         </main>
 
     </Fragment>

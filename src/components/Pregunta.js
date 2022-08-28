@@ -1,7 +1,7 @@
 import React, {Fragment, useState} from 'react'
 import Error from './Error'
 
-const Pregunta = ({menssage, setBudget, setRemaining}) => {
+const Pregunta = ({menssage, setBudget, setRemaining, setAsk}) => {
 
     const [amount, setAmount] = useState(0) 
     const [error, setError ] = useState(false)
@@ -11,7 +11,7 @@ const Pregunta = ({menssage, setBudget, setRemaining}) => {
         e.preventDefault();
 
        // Validar
-       if(amount <= 0 || amount === '' || isNaN(amount) ){
+       if(amount <= 0 || isNaN(amount) ){
         setError(true)
         return
        }
@@ -20,6 +20,7 @@ const Pregunta = ({menssage, setBudget, setRemaining}) => {
        setError(false)
        setBudget(amount)
        setRemaining(amount)
+       setAsk(false)
     
     } 
 
@@ -43,7 +44,7 @@ const Pregunta = ({menssage, setBudget, setRemaining}) => {
 
                     <button
                         type='submit'
-                        className='w-full bg-cyan-400 p-2 mt-5 text-white font-bold'
+                        className='w-full bg-cyan-400 hover:bg-cyan-500 p-2 mt-5 text-white font-bold'
                         value='Add budget'
                     >Add budget </button>
 
