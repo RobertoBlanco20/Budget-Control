@@ -9,6 +9,12 @@ function App() {
   const [ budget, setBudget ] = useState(0);
   const [remaining, setRemaining ] = useState(0);
   const [ ask, setAsk ] = useState(true);
+  const [ spents, setSpents ] = useState([]);
+
+  const addNewSpent = spent => {
+    setSpents([...spents,
+      spent]);
+  }
 
   return (
     <Fragment>
@@ -25,11 +31,13 @@ function App() {
             
             : 
             
-            (<article className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-            <section className='w-full'>
-              <Formulario />
-            </section>
-            <section className='w-full'>2</section>
+            (<article className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                <section className='w-full'>
+                  <Formulario
+                        addNewSpent={addNewSpent}
+                  />
+                </section>
+                <section className='w-full'>2</section>
             </article>)}
          
             

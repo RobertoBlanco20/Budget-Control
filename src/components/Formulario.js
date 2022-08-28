@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
+import shortid from 'shortid';
 import Error from './Error'
 
-const Formulario = ({menssage}) => {
+
+const Formulario = ({menssage, addNewSpent}) => {
 
     const [ name, setName ] = useState('');
     const [ amountform, setAmountForm ] = useState(0);
@@ -19,11 +21,19 @@ const Formulario = ({menssage}) => {
 
         // Construir el gasto
 
+        const spent = {
+            name: name,
+            amountform: parseInt(amountform),
+            id: shortid.generate()
+        }
 
         // Pasar el gasto al componente principal
+        addNewSpent(spent);
 
 
         // Resetear el form
+        setName('');
+        setAmountForm(0);
     }
 
     return ( 
@@ -52,7 +62,7 @@ const Formulario = ({menssage}) => {
                     placeholder="Ej. 300"
                     className='w-full'
                     value={amountform}
-                    onChange={ e => setAmountForm( parseInt(e.target.value), 10 )} // ME DA ERROR (NAN)
+                    onChange={ e => setAmountForm( e.target.value )} // ME DA ERROR (NAN)
                 />        
 
                 <input 
