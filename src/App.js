@@ -1,7 +1,8 @@
 import React, {Fragment, useState} from 'react';
 import Pregunta from './components/Pregunta'
 import Formulario from './components/Formulario'
-
+import Listado from './components/Listado'
+import ControlPresupuesto from './components/ControlPresupuesto'
 
 function App() {
 
@@ -22,7 +23,7 @@ function App() {
           <h1 className="text-center text-5xl mt-4 text-white">weekly budget</h1>
         </header>
 
-        <main className="container bg-white w-8/12 mx-auto mt-10 my-4 rounded p-5">
+        <main className="container bg-white w-full sm:w-8/12 mx-auto mt-10 my-4 rounded p-5">
           { ask ? (   <Pregunta 
               setBudget={setBudget}
               setRemaining={setRemaining}
@@ -37,7 +38,17 @@ function App() {
                         addNewSpent={addNewSpent}
                   />
                 </section>
-                <section className='w-full'>2</section>
+                <section className='w-full'>
+                  <Listado 
+                      spents={spents}
+                  />
+
+                  <ControlPresupuesto
+                      budget={budget}
+                      remaining={remaining}
+
+                  />
+                </section>
             </article>)}
          
             
